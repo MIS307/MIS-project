@@ -1,0 +1,77 @@
+package project;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * This class manages a collection of customer accounts
+ * allowing the hotel to see how many people are currently checked in, who owes money, etc.
+ * @Haley_Klusman 
+ */
+public class CustomerAccounts
+{   
+	private ArrayList<CustomerAccount> customerAccounts;
+
+	/**
+	 * Initialize the list of customerAccounts.
+	 */
+	public CustomerAccounts()
+	{
+		customerAccounts = new ArrayList<CustomerAccount>();
+	}
+
+	/**
+	 * Adds a customer account to our list.
+	 * @param c the customer account object to add
+	 */
+	public void addCustomerAccount(CustomerAccount c)
+	{
+		customerAccounts.add(c);
+	}
+	
+	/** checkout customer from hotel
+	 * removes customer
+	 * @param c the customer account object to remove
+	 */
+	public void checkout(CustomerAccount c)
+	{
+		customerAccounts.remove(c);
+	} 
+
+	/**
+	 * Finds a customer account with the matching account number.
+	 * @param number the account number to find
+	 * @return the customer account with the matching number
+	 * @throws IllegalArgumentException if there is no match
+	 */
+	public CustomerAccount find(int number)
+	{
+		for (CustomerAccount ca : customerAccounts)
+		{
+			if (ca.getAccountNumber() == number) // Found a match
+				return ca;
+		} 
+		// No match in the entire array list
+		throw new IllegalArgumentException("CustomerAccount " + number +
+						   " was not found");
+	}
+   
+	/**
+	 * Return a string that describes all the customerAccounts
+	 * in the accounts list.
+	 */
+	public String toString()
+	{
+		double totalBalance = 0.0;
+		StringBuffer sb = new StringBuffer();
+		for (CustomerAccount ca : customerAccounts)
+		{
+			sb.append(ca.toString());
+			sb.append('\n');
+			totalBalance += ca.getBillBalance();
+		}
+		sb.append(String.format("Total balance of accounts receivable: %.2f\n", totalBalance));
+		return sb.toString();
+	}
+}
