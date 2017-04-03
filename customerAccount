@@ -10,9 +10,9 @@ public class CustomerAccount
 {
 	private String name;
 	private int accountNumber;
-	private int creditCard;
+	//private int creditCard;
 	private double billBalance;
-	private String checkedInOutStatus;
+	private boolean checkedInStatus;
 
 	/**
 	 * Constructs a customer account with a specified
@@ -22,12 +22,12 @@ public class CustomerAccount
 	 * @param newAccountBalance - balance on account
 	 */
 	public CustomerAccount(String newName, int newAccountNumber,
-		       double newBillBalance, String newStatus)
+		       double newBillBalance, boolean newStatus)
 	{
 		name = newName;
 		accountNumber = newAccountNumber;
 		billBalance = newBillBalance;
-		checkedInOutStatus = newStatus;
+		checkedInStatus = newStatus;
 	}
 	
 	/**
@@ -52,7 +52,10 @@ public class CustomerAccount
 		double newBillBalance = billBalance - amount;
 		billBalance = newBillBalance;
 	}
-	
+	public void checkOut()
+	{
+		checkedInStatus = false;
+	}
 
 	/**
 	 * Gets the name for this customer's account.
@@ -63,9 +66,9 @@ public class CustomerAccount
 		return name;
 	}
 	
-	public String getStatus()
+	public boolean getStatus()
 	{
-		return checkedInOutStatus;
+		return checkedInStatus;
 	}
 
 	/**
@@ -93,6 +96,6 @@ public class CustomerAccount
 	public String toString()
 	{
 		return String.format("%d %s %.2f %s", 
-				     accountNumber, name, billBalance, checkedInOutStatus);
+				     accountNumber, name, billBalance, checkedInStatus);
 	}
 }
