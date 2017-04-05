@@ -1,0 +1,10 @@
+
+public class RoomOccupiedException extends IllegalArgumentException
+{
+	public RoomOccupiedException() {}
+	
+	public RoomOccupiedException(String message)
+	{
+		super(message);
+	}
+}
