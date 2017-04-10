@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+/**
+ * This class keeps track of a running total of money made and 
+ * allows the worker to view the percentage of rooms currently
+ * occupied in the hotel
+ */
+
+public class Hotel {
+	private double profit; 
+	private int numPeople;
+	
+	public Hotel() {
+		profit = 0.0; 
+		numPeople = 0; 
+	}
+/*
+ * Allows the worker to view the percentage of rooms currently available	
+ */
+	public double getOccupancyRate(Rooms obj) {
+		int occupied = 0; 
+		int total = 0; 
+		
+		//Room class needs to have a method that returns arraylist of all rooms in the system
+		ArrayList<room> rooms = obj.getListOf();
+		for (room room : rooms) {
+			if(room.getAvailability()) {
+				occupied++; 
+			}
+			total++;
+		}
+		
+		return (occupied/total) * 100; 
+	}
+	
+	/*
+	 * Adds profit to the total amount made
+	 */
+	public void addProfit(double amount) {
+		profit += amount; 
+	}
+	
+	/*
+	 * Returns amount of profit made since the time input to the method
+	 */
+	public double getProfit() {
+		return profit; 
+	}
+
+}
