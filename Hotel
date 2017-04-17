@@ -1,3 +1,5 @@
+package project;
+
 import java.util.ArrayList;
 
 /**
@@ -22,9 +24,9 @@ public class Hotel {
 		int total = 0; 
 		
 		//Room class needs to have a method that returns arraylist of all rooms in the system
-		ArrayList<room> rooms = obj.getListOf();
-		for (room room : rooms) {
-			if(room.getAvailability()) {
+		ArrayList<Room> rooms = obj.getListOf();
+		for (Room roomNum : rooms) {
+			if(roomNum.getAvailability()) {
 				occupied++; 
 			}
 			total++;
