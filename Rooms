@@ -1,0 +1,64 @@
+	package project;
+	import java.io.File;
+	import java.io.FileNotFoundException;
+	import java.util.ArrayList;
+	import java.util.Scanner;
+
+	/**
+	 * This class manages a collection of hotel rooms
+	 * allowing workers to easily access room availability and details
+	 */
+	public class Rooms
+	{   
+		private ArrayList<Rooms> rooms;
+
+		/**
+		 * This class manages a collection of hotel rooms
+	 * allowing workers to easily access room availability and details
+	 *
+	 */
+		public Rooms()
+		 {
+				rooms=new ArrayList<Rooms>();
+		 }
+			
+		/**
+		 * Adds a hotel room to the list when it becomes available
+		 * 
+		 */
+		public void addRoom(Room r)
+		{
+			rooms.add(r);
+		}
+		
+		/**
+		 * removes room from the list when it is unavailable
+		 * 
+		 */
+		public void checkout(Room r)
+		{
+			Room.remove(r);
+		} 
+
+		/**
+		 * Finds the current availability of a specific room. 
+		 * @param number the room number to find
+		 * @return the details about the room
+		 * @throws IllegalArgumentException if there is no match
+		 */
+		public Room find(int number)
+		{
+			for (Room room: Rooms)
+			{
+				if (room.getRoomNumber() == number) // Found a match
+					return room;
+			} 
+			// No match in the entire array list
+			throw new IllegalArgumentException("Room " + number +
+							   " was not found");
+		}
+	   
+
+	}
+
+	
