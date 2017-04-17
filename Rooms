@@ -10,7 +10,7 @@
 	 */
 	public class Rooms
 	{   
-		private ArrayList<Rooms> rooms;
+		private ArrayList<Room> rooms;
 
 		/**
 		 * This class manages a collection of hotel rooms
@@ -19,7 +19,7 @@
 	 */
 		public Rooms()
 		 {
-				rooms=new ArrayList<Rooms>();
+				rooms=new ArrayList<Room>();
 		 }
 			
 		/**
@@ -37,7 +37,7 @@
 		 */
 		public void checkout(Room r)
 		{
-			Room.remove(r);
+			rooms.remove(r);
 		} 
 
 		/**
@@ -48,17 +48,17 @@
 		 */
 		public Room find(int number)
 		{
-			for (Room room: Rooms)
+			for (Room roomNum: rooms)
 			{
-				if (room.getRoomNumber() == number) // Found a match
-					return room;
+				if (roomNum.getRoomNumber() == number) // Found a match
+					return roomNum;
 			} 
 			// No match in the entire array list
 			throw new IllegalArgumentException("Room " + number +
 							   " was not found");
 		}
+
+		
 	   
 
 	}
-
-	
