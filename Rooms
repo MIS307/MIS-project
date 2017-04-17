@@ -58,6 +58,12 @@
 							   " was not found");
 		}
 
+		public ArrayList<Room> getListOf() 
+		{
+			// TODO Auto-generated method stub
+			return rooms;
+		}
+
 		
 	   
 
