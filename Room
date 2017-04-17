@@ -1,0 +1,83 @@
+package project;
+/** 
+ * A Room will have:
+ * a room number that starts at zero
+ * a type of room
+ * a vacancy status
+ */
+public class Room {
+	
+	private String roomType;
+	private int roomNumber;
+	private boolean Vacancy;
+	private double roomRate;
+	
+	public Room(String newRoomType, int newRoomNumber, boolean newVacancy)
+	{
+		roomType = newRoomType;
+		roomNumber = newRoomNumber;
+		Vacancy = newVacancy;
+	}
+	
+	public void roomRate(String newRoomType)
+	{
+		roomType = newRoomType;
+		if (roomType == "double queen")
+				{
+					roomRate = 129.99;
+				}
+		if (roomType == "single king")
+		{
+			roomRate = 139.99;
+		}
+		if (roomType == "kitchenette suite")
+		{
+			roomRate = 159.99;
+		}
+		if (roomType == "luxury suite")
+		{
+			roomRate = 199.99;
+		}
+		else
+		{
+			roomRate = 0;
+		}
+	}
+		
+	public void vacant()
+	{
+		Vacancy = false;
+	}
+	
+	//public int getRoomNumber
+	//{
+		
+		
+	//}
+	
+	public String getRoomType()
+	{
+		return roomType;
+	}
+	
+	public double getRoomRate()
+	{
+		return roomRate;
+	}
+	
+	public int getRoomNumber()
+	{
+		return roomNumber;
+	}
+	
+	public boolean getVacancy()
+	{
+		return Vacancy;
+	}
+	
+	public String roomToString()
+	{
+		return String.format("%s %.2f %d %s" , roomType, roomRate, roomNumber, Vacancy);
+	}
+
+}
