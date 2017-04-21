@@ -1,4 +1,4 @@
-	package project;
+package project;
 	import java.io.File;
 	import java.io.FileNotFoundException;
 	import java.util.ArrayList;
@@ -10,7 +10,7 @@
 	 */
 	public class Rooms
 	{   
-		private ArrayList<Room> rooms;
+		private ArrayList<room> rooms;
 
 		/**
 		 * This class manages a collection of hotel rooms
@@ -18,26 +18,36 @@
 	 *
 	 */
 		public Rooms()
-		 {
-				rooms=new ArrayList<Room>();
-		 }
-			
-		/**
-		 * Adds a hotel room to the list when it becomes available
-		 * 
-		 */
-		public void addRoom(Room r)
 		{
-			rooms.add(r);
-		}
+				rooms=new ArrayList<room>();
+				for(int i = 0; i < 200; i++) {
+					if(i % 4 == 0) {
+						room room = new room("double queen", i, true);
+						rooms.add(room); 
+					}
+					else if(i % 4 == 1) {
+						room room = new room("single king", i, true);
+						rooms.add(room); 
+					}
+					else if(i % 4 == 2) {
+						room room = new room("kitchenette suite", i, true);
+						rooms.add(room); 
+					}
+					else {
+						room room = new room("luxury suite", i, true);
+						rooms.add(room); 
+					}
+				}
+		 }
 		
 		/**
 		 * removes room from the list when it is unavailable
 		 * 
 		 */
-		public void checkout(Room r)
+		public void checkout(room r)
 		{
-			rooms.remove(r);
+			room room = this.find(r.getRoomNumber()); 
+			room.setVacancy(false);
 		} 
 
 		/**
@@ -46,9 +56,9 @@
 		 * @return the details about the room
 		 * @throws IllegalArgumentException if there is no match
 		 */
-		public Room find(int number)
+		public room find(int number)
 		{
-			for (Room roomNum: rooms)
+			for (room roomNum: rooms)
 			{
 				if (roomNum.getRoomNumber() == number) // Found a match
 					return roomNum;
@@ -58,9 +68,8 @@
 							   " was not found");
 		}
 
-		public ArrayList<Room> getListOf() 
+		public ArrayList<room> getListOf() 
 		{
-			// TODO Auto-generated method stub
 			return rooms;
 		}
 
