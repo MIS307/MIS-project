@@ -5,48 +5,49 @@ package project;
  * a type of room
  * a vacancy status
  */
-public class Room {
+public class room {
 	
 	private String roomType;
 	private int roomNumber;
 	private boolean Vacancy;
 	private double roomRate;
 	
-	public Room(String newRoomType, int newRoomNumber, boolean newVacancy)
+	public room(String newRoomType, int newRoomNumber, boolean newVacancy)
 	{
 		roomType = newRoomType;
 		roomNumber = newRoomNumber;
 		Vacancy = newVacancy;
+		this.roomRate(roomType); 
 	}
 	
 	public void roomRate(String newRoomType)
 	{
-		roomType = newRoomType;
-		if (roomType == "double queen")
+		if (roomType.equals("double queen"))
 				{
 					roomRate = 129.99;
 				}
-		if (roomType == "single king")
+		if (roomType.equals("single king"))
 		{
 			roomRate = 139.99;
 		}
-		if (roomType == "kitchenette suite")
+		else if (roomType.equals("kitchenette suite"))
 		{
 			roomRate = 159.99;
 		}
-		if (roomType == "luxury suite")
+		else if (roomType.equals("luxury suite"))
 		{
 			roomRate = 199.99;
 		}
-		else
-		{
-			roomRate = 0;
-		}
+
 	}
 		
 	public void vacant()
 	{
 		Vacancy = false;
+	}
+	
+	public void setVacancy(boolean isVacant) {
+		Vacancy = isVacant; 
 	}
 	
 	//public int getRoomNumber
