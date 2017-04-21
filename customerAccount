@@ -99,3 +99,4 @@ public class CustomerAccount
 				     accountNumber, name, billBalance, checkedInStatus);
 	}
 }
+
