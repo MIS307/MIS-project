@@ -45,15 +45,15 @@ public class CustomerAccounts
 	 * @return the customer account with the matching number
 	 * @throws IllegalArgumentException if there is no match
 	 */
-	public CustomerAccount find(int number)
+	public CustomerAccount find(String name)
 	{
 		for (CustomerAccount ca : customerAccounts)
 		{
-			if (ca.getAccountNumber() == number) // Found a match
+			if (ca.getName().equals(name)) // Found a match
 				return ca;
 		} 
 		// No match in the entire array list
-		throw new IllegalArgumentException("CustomerAccount " + number +
+		throw new IllegalArgumentException("Customer " + name +
 						   " was not found");
 	}
    
