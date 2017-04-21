@@ -7,12 +7,13 @@ public class UserInterface {
 
 	public static void main(String[] arg) {
 
-		Hotel motel = new Hotel();
 		CustomerAccounts customers = new CustomerAccounts();
+		Rooms rooms = new Rooms(); 
+		Hotel motel = new Hotel(rooms);
 
 		Scanner console = new Scanner(System.in);
 		System.out.println("What would you like to do?: Enter option: ");
-		System.out.println("Q)Quit, 1)add customer, 2)check room availability 3)book room 4)hotel report");
+		System.out.println("Q)Quit, 1)add customer, 2)get available rooms 3)book room 4)hotel report");
 		String action = console.next();
 
 		while (!action.equals("q") || !action.equals("Q")) {
@@ -25,10 +26,10 @@ public class UserInterface {
 				System.out.println("Enter Name: ");
 				String name = console.next();
 				console.nextLine();
-				System.out.println("enter Account Number: ");
+				System.out.println("Enter Account Number: ");
 				int aNumber = console.nextInt();
 				console.nextLine();
-				System.out.println("enter Account Blanace: ");
+				System.out.println("Enter Account Balance: ");
 				double aBalance = console.nextDouble();
 				console.nextLine();
 
@@ -46,8 +47,8 @@ public class UserInterface {
 			}
 
 			if (action.equals("2")) {
-				ArrayList<Room> vacant = motel.getRooms();
-				for (Room r : vacant) {
+				ArrayList<room> vacant = motel.getRooms();
+				for (room r : vacant) {
 					if (r.getVacancy() == true) {
 						System.out.println(r.getRoomNumber());
 					}
@@ -55,24 +56,25 @@ public class UserInterface {
 			}
 			// this books first room available 
 			if (action.equals("3")) {
-				System.out.println("enter customer ID: ");
-				int id = console.nextInt();
-				CustomerAccount customer1 = customers.find(id);
+				System.out.println("enter customer name: ");
+				String name = console.next();
+				CustomerAccount customer1 = customers.find(name);
 				
-				Room taken = null;
+				room taken = null;
 				double rate = 0;
-				ArrayList<Room> vacant = motel.getRooms();
-				for (Room r : vacant) {
+				//ArrayList<room> vacant = motel.getRooms();
+				
+				for (room r : rooms.getListOf()) {
 					if (r.getVacancy() == true) {
 						System.out.println(r.getRoomNumber());
 						r.setVacancy(false);
 						rate = r.getRoomRate();
 						taken = r;
-						return;
+						break;
 					}
 				}
 				customer1.purchase(rate);
-				System.out.println(customer1.getName() + " checked out room: "+ taken.getRoomNumber()+" at rate: "+rate);
+				System.out.println(customer1.getName() + " checked out room: "+ taken.getRoomNumber()+" at rate: "+rate + "\n");
 				motel.addProfit(rate);
 			}
 
