@@ -11,10 +11,12 @@ import java.util.ArrayList;
 public class Hotel {
 	private double profit; 
 	private int numPeople;
+	private ArrayList<Room> rooms;
 	
 	public Hotel() {
 		profit = 0.0; 
 		numPeople = 0; 
+		rooms = new ArrayList<Room>();
 	}
 /*
  * Allows the worker to view the percentage of rooms currently available	
@@ -24,7 +26,7 @@ public class Hotel {
 		int total = 0; 
 		
 		//Room class needs to have a method that returns arraylist of all rooms in the system
-		ArrayList<Room> rooms = obj.getListOf();
+		rooms = obj.getListOf();
 		for (Room roomNum : rooms) {
 			if(roomNum.getAvailability()) {
 				occupied++; 
@@ -47,6 +49,10 @@ public class Hotel {
 	 */
 	public double getProfit() {
 		return profit; 
+	}
+	
+	public ArrayList<Room> getRooms(){
+		return rooms;
 	}
 
 }
